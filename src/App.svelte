@@ -29,10 +29,15 @@ import FeedbackStats from './components/FeedbackStats.svelte';
 	  const itemId = e.detail;
 	  feedback = feedback.filter(item => item.id != itemId)
   }
+
+  const addFeedback = e => {
+	  const newItem = e.detail;
+	  feedback = [...feedback, newItem]
+  }
 </script>
 
 <main class="container">
-	<FeedbackForm />
+	<FeedbackForm on:feedback-submit={addFeedback}/>
 	<FeedbackStats {count} {average}/>
 	<FeedbackList {feedback} on:delete-feedback={deleteFeedback}/>
 </main>
