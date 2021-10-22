@@ -18,10 +18,15 @@
 		  text: 'student total let laugh tongue story pet led column imagine society temperature friendly teacher bright hardly north beat figure last mouse interest congress slept',
 	  },
   ]
+
+  const deleteFeedback = e => {
+	  const itemId = e.detail;
+	  feedback = feedback.filter(item => item.id != itemId)
+  }
 </script>
 
 <main class="container">
-	<FeedbackList {feedback}/>
+	<FeedbackList {feedback} on:delete-feedback={deleteFeedback}/>
 </main>
 
 <style>
