@@ -3,6 +3,20 @@
 	let lastName = 'Fari';
 	let color = 'maroon'
 	let showText = false
+	let users = [
+		{
+			id: 1,
+			name: "john"
+		},
+		{
+			id: 2,
+			name: "not john"
+		},
+		{
+			id: 3,
+			name: "okay, relax"
+		},
+	]
 
 	// reactive value
 	$: name = firstName + ' ' + lastName
@@ -10,6 +24,7 @@
 	const toggle = () => {
 		color = color === 'blue' ? 'purple' :  'blue'
 		showText = !showText
+		users = [...users, {id: 4, name: 'Jen'}]
 	}
 </script>
 
@@ -17,10 +32,14 @@
 	<h1 style="color: {color}">Hello {name}!</h1>
 	{#if showText}
 		<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-		{:else}
+	{:else}
 		<p>No text</p>
 	{/if}
 	<button on:click={toggle}>Change color</button>
+
+	{#each users as user (user.id)}
+		<h3>{user.id}: {user.name}</h3>
+	{/each}
 </main>
 
 <style>
