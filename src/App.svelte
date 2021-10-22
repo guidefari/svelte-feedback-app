@@ -32,7 +32,7 @@ import FeedbackStats from './components/FeedbackStats.svelte';
 
   const addFeedback = e => {
 	  const newItem = e.detail;
-	  feedback = [...feedback, newItem]
+	  feedback = [newItem, ...feedback ]
   }
 </script>
 

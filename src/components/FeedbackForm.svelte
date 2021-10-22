@@ -34,6 +34,7 @@ const handleSubmit = () => {
         }
 
         dispatch('feedback-submit', newFeedback)
+        text = ''
     }
 }
 
