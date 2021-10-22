@@ -1,65 +1,29 @@
 <script>
-	let firstName = 'Guide';
-	let lastName = 'Fari';
-	let color = 'maroon'
-	let showText = false
-	let users = [
-		{
-			id: 1,
-			name: "john"
-		},
-		{
-			id: 2,
-			name: "not john"
-		},
-		{
-			id: 3,
-			name: "okay, relax"
-		},
-	]
-
-	// reactive value
-	$: name = firstName + ' ' + lastName
-
-	const toggle = () => {
-		color = color === 'blue' ? 'purple' :  'blue'
-		showText = !showText
-		users = [...users, {id: 4, name: 'Jen'}]
-	}
+	import FeedbackList from './components/FeedbackList.svelte'
+	
+  let feedback = [
+	  {
+		  id: 1,
+		  rating: 9,
+		  text: 'girl end spring excitement aware wonderful atmosphere language caught oil book goes donkey nature already dinner maybe shop tool spider which such sign strength',
+	  },
+	  {
+		  id: 3,
+		  rating: 1,
+		  text: 'character left apple ball thus anywhere massage would hang location put toy torn bridge excited second diagram skill numeral operation without silence freedom sharp',
+	  },
+	  {
+		  id: 2,
+		  rating: 4,
+		  text: 'student total let laugh tongue story pet led column imagine society temperature friendly teacher bright hardly north beat figure last mouse interest congress slept',
+	  },
+  ]
 </script>
 
 <main>
-	<h1 style="color: {color}">Hello {name}!</h1>
-	{#if showText}
-		<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-	{:else}
-		<p>No text</p>
-	{/if}
-	<button on:click={toggle}>Change color</button>
-
-	{#each users as user (user.id)}
-		<h3>{user.id}: {user.name}</h3>
-	{/each}
+	<FeedbackList {feedback}/>
 </main>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
 </style>
